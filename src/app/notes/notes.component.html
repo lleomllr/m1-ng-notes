@@ -1,0 +1,18 @@
+<div class="notes-container" *ngIf="loaded">
+    <h2 class="title">Mes notes</h2>
+    <button class="add-button" (click)="dialogAddNote($event)">Ajouter une note</button>
+  
+    <div class="note-list">
+      <div class="note-card" *ngFor="let note of notes">
+        <div class="note-header">
+          <h3>{{ note.title }}</h3>
+          <span class="tag-label">
+            {{ getTagName(note) }}
+          </span>
+        </div>
+        <p class="note-content">{{ note.content }}</p>
+        <button class="delete-button" (click)="deleteNote(note)">Supprimer</button>
+      </div>
+    </div>
+  </div>
+  

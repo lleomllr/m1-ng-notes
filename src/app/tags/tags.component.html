@@ -1,0 +1,23 @@
+<ul>
+  @for(tag of tags; track $index) {
+    <li (dblclick)="updateEditedTag(tag)">
+      {{ tag.name }}
+      <button (click)="deleteTag(tag)">
+        X
+      </button>
+    </li>
+  } @empty {
+    <li>Aucun tag !</li>
+  }
+</ul>
+
+<a href= "#" (click)="dialogAddTag($event)">Ajouter une nouvelle étiquette</a>
+
+@if(editing) {
+<form>
+    <input type="text" [(ngModel)]="editing.name" name="editing.name"/>
+    <input type="color" [(ngModel)]="editing.color" name="editing.color"/>
+    <button type="submit" (click)="handleEditCancelEvent()">ANNULER</button>
+    <button type="submit" (click)="handleEditConfirmEvent()">VALIDER</button>
+</form>
+}

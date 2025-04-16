@@ -1,0 +1,104 @@
+ul {
+    list-style-type: none; 
+    padding: 0; 
+    margin: 20px 0;
+    background-color: #f9f9f9; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+li {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+    transition: background 0.3s; 
+}
+
+li:last-child {
+    border-bottom: none; 
+}
+
+li:hover {
+    background-color: #e9ecef; 
+    cursor: pointer; 
+}
+
+li:empty {
+    text-align: center; 
+    color: #888; 
+}
+
+a {
+    display: inline-block;
+    margin-top: 15px; 
+    padding: 10px 15px; 
+    background-color: #007bff; 
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+a:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    color: #dc3545; /* Rouge doux */
+    font-size: 16px;
+    padding: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+  
+button:hover {
+    background-color: rgba(220, 53, 69, 0.1); 
+    transform: scale(1.1);
+}
+  
+
+form {
+    background-color: #f9f9f9;
+    border-radius: 8px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    padding: 20px; 
+    margin-top: 20px; 
+}
+
+input[type="text"],
+input[type="color"] {
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 15px; 
+    border: 1px solid #ddd; 
+    border-radius: 4px; 
+    transition: border-color 0.2s; 
+}
+
+input[type="text"]:focus,
+input[type="color"]:focus {
+    border-color: #007bff; 
+    outline: none; 
+}
+button[type="submit"] {
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
+    padding: 10px 15px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; 
+    transform: scale(1.05);
+}
+
+button[type="submit"]:last-child {
+    margin-left: 10px; 
+}

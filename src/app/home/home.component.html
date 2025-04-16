@@ -1,0 +1,16 @@
+<div class="home-container">
+    <h2 class="title">Toutes les notes</h2>
+  
+    <div class="note-list">
+      <div class="note-card" *ngFor="let note of notes">
+        <div class="note-header">
+          <h3>{{ note.title }}</h3>
+          <span class="tag-label" [style.background]="getTagColor(note)">
+            {{ getTagName(note) }}
+          </span>
+        </div>
+        <p class="note-content">{{ note.content }}</p>
+      </div>
+    </div>
+  </div>
+  
