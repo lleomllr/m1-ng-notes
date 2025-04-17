@@ -1,8 +1,6 @@
 .tagComponent {
     display: flex;
     flex-direction: column;
-    border: solid black 2px;
-    border-radius: 9999px 9999px 9999px 9999px;
     padding: 9px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -11,6 +9,16 @@
 .tagComponent:hover {
     cursor: pointer;
     border-width: 3px;
+}
+
+.tagLabel {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .tagLabel:hover {
