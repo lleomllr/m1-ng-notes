@@ -54,34 +54,35 @@ export class StorageService {
   }
 
   getNotes(): Notes[] {
-    return this.notes;
+      if (this.notes.length === 0) {
+        const stored = localStorage.getItem(this.notesk);
+        this.notes = stored ? JSON.parse(stored) : [];
+      }
+      return this.notes;
   }
-
+    
   addNote(note: Notes): void {
-    const exists = this.notes.some(existingNote => existingNote.title === note.title);
-    if (!exists) {
-      this.notes.push(note);
+      const notes = this.getNotes();
+      note.id = notes.length > 0 ? Math.max(...notes.map(n => n.id)) + 1 : 1;
+      notes.push(note);
       this.saveNotes();
-    } else {
-      console.warn(`La note "${note.title}" existe déjà.`);
-    }
   }
-
-  deleteNote(noteToDelete: Notes): void {
-    this.notes = this.notes.filter(note => note.id !== noteToDelete.id);
-    this.saveNotes();
-  }
-
-  updateNote(updatedNote: Notes): void {
-    const index = this.notes.findIndex(note => note.id === updatedNote.id);
-    if (index !== -1) {
-      this.notes[index] = updatedNote;
+    
+  deleteNote(note: Notes): void {
+      this.notes = this.getNotes().filter(n => n.id !== note.id);
       this.saveNotes();
-    }
   }
-
+  
+  updateNote(note: Notes): void {
+      const index = this.notes.findIndex(n => n.id === note.id);
+      if (index !== -1) {
+        this.notes[index] = note;
+        this.saveNotes();
+      }
+  }
+    
   private saveNotes(): void {
-    localStorage.setItem(this.notesk, JSON.stringify(this.notes));
+      localStorage.setItem(this.notesk, JSON.stringify(this.notes));
   }
 
   private loadNotes(): void {
@@ -90,5 +91,4 @@ export class StorageService {
       this.notes = JSON.parse(storedNotes);
     }
   }
-
 }
