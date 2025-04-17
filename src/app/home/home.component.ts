@@ -6,7 +6,7 @@ import { NgFor, NgIf } from '@angular/common';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [NgFor, NgIf],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -19,11 +19,11 @@ export class HomeComponent {
     this.notes = this.storage.getNotes(); 
   }
 
-  getTagName(notes : Notes) : string {
-    return notes.tags.length > 0 ? notes.tags[0].name : '(Aucun tag)'; 
+  getTagNames(note: Notes): string[] {
+    return note.tags.map(tag => tag.name);
   }
-
-  getTagColor(notes : Notes) : string {
-    return notes.tags.length > 0 ? notes.tags[0].color : '#888'; 
-  }
+  
+  getTagColors(note: Notes): string[] {
+    return note.tags.map(tag => tag.color);
+  }  
 }
