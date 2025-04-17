@@ -5,9 +5,14 @@
       <div class="note-card" *ngFor="let note of notes">
         <div class="note-header">
           <h3>{{ note.title }}</h3>
-          <span class="tag-label" [style.background]="getTagColor(note)">
-            {{ getTagName(note) }}
+          <span 
+            class="tag-label"
+            *ngFor="let tag of note.tags"
+            [style.backgroundColor]="tag.color"
+          >
+          {{ tag.name }}
           </span>
+
         </div>
         <p class="note-content">{{ note.content }}</p>
       </div>
