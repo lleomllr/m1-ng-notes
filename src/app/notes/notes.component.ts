@@ -16,7 +16,7 @@ export class NotesComponent {
   loaded: boolean = false;
   notes: Notes[] = [];
   tags: Tag[] = [];
-  editing?: Notes;
+  editing: Notes | null = null;
 
   constructor(private storage: StorageService) {}
 
@@ -71,5 +71,34 @@ export class NotesComponent {
 
   getTagName(note: Notes): string {
     return note.tags.length > 0 ? note.tags[0].name : '(Aucun tag)';
+  }
+
+  getTagColor(note: Notes): string[] {
+    return note.tags.map(tag => tag.color);
+  }
+
+
+  EditingNote(): void {
+    if (!this.editing) return;
+
+    this.storage.updateNote(this.editing);
+    this.notes = this.storage.getNotes();
+    this.editing = null;
+  }
+
+  cancelEdit(): void {
+    this.editing = null;
+  }
+
+  editNote(note: Notes): void {
+    this.editing = JSON.parse(JSON.stringify(note));
+  }
+
+  submitNote(note: Notes): boolean {
+    if (!note) return false;
+
+    this.notes = this.storage.getNotes();
+    console.log(this.notes);
+    return false;
   }
 }
